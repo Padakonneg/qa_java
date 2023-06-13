@@ -1,9 +1,11 @@
+import com.example.Feline;
 import com.example.Lion;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.mockito.Spy;
 
@@ -12,11 +14,14 @@ public class LionParamConstructTest {
 
     boolean hasMane;
 
+    @Mock
+    Feline feline;
+
     @Spy
     private Lion lion;
 
     public LionParamConstructTest(String sex, Boolean hasMane) throws Exception {
-        lion = new Lion(sex);
+        lion = new Lion(sex, feline);
         this.hasMane = hasMane;
     }
 
