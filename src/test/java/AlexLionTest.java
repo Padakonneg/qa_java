@@ -1,4 +1,5 @@
 import com.example.AlexLion;
+import com.example.Feline;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,10 +14,11 @@ public class AlexLionTest {
 
     @Mock
     AlexLion alexLion;
+    Feline feline;
 
     @Before
     public void setUp() throws Exception {
-        alexLion = new AlexLion();
+        alexLion = new AlexLion(feline);
     }
 
     @Test

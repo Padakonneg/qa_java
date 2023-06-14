@@ -18,10 +18,6 @@ public class Lion {
         }
     }
 
-    public Lion(boolean hasMane) {
-        this.hasMane = hasMane;
-    }
-
     public int getKittens() {
         return feline.getKittens();
     }
