@@ -1,11 +1,11 @@
 import com.example.Feline;
 import com.example.Lion;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.Spy;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.util.List;
@@ -14,23 +14,24 @@ import java.util.List;
 public class LionMethodTest {
 
     @Mock
-    Feline feline = new Feline();
+    private Feline feline;
+    private Lion lion;
 
-    @Spy
-    private Lion lion = new Lion("Самец", feline);
-
-    public LionMethodTest() throws Exception {
+    @Before
+    public void setUp() throws Exception {
+        lion = new Lion("Самец", feline);
     }
 
     @Test
     public void getKittens() {
         Mockito.when(feline.getKittens()).thenReturn(1);
-        int felineKittens = feline.getKittens();
-        Assert.assertEquals(felineKittens, lion.getKittens());
+        Assert.assertEquals(1, lion.getKittens());
     }
 
     @Test
     public void getFood() throws Exception {
+        List<String> list = List.of("Животные", "Птицы", "Рыба");
+        Mockito.when(feline.eatMeat()).thenReturn(list);
         Assert.assertEquals(List.of("Животные", "Птицы", "Рыба"), lion.getFood());
     }
 }
